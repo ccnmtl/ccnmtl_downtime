@@ -17,15 +17,11 @@ cherrypy.config.update({'global' : {'server.socketPort' : int(options.port)},
                                      'staticFilter.dir' : image_path}})
 
 class DownTimeApp:
-    def index(self):
+    def default(self,*args,**kwargs):
         output = open(index_path,"r").read()
         output = output.replace("[this system]",options.system)
         output = output.replace("[date or time here]",options.time)
         return output
-    index.exposed = True
-
-    def default(self,*args,**kwargs):
-        raise cherrypy.HTTPRedirect("/")
     default.exposed = True
 
 if __name__ == "__main__":
