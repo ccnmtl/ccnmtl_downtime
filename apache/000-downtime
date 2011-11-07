@@ -1,0 +1,19 @@
+<VirtualHost *:80>
+        ServerAdmin ccnmtl-sysadmin@columbia.edu
+	ServerName downtime.ccnmtl.columbia.edu
+#	ServerAlias <something>.ccnmtl.columbia.edu	
+
+        DocumentRoot /var/www/downtime_template/
+
+	RewriteEngine On
+	RewriteCond %{REQUEST_URI} !^/downtime_template.html$ 
+	RewriteRule $ /downtime_template.html [R=302,L]
+
+        <Directory /var/www/downtime_template/>
+		   DirectoryIndex downtime_template.html
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+</VirtualHost>
