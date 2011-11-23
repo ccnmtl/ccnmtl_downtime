@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!ve/bin/python
 import cherrypy
 import os.path
 
@@ -9,8 +9,8 @@ parser.add_option("-s","--system",dest="system", help="system name", default="th
 parser.add_option("-t","--time",dest="time", help="what time the system is expected to be back up", default="", metavar="TIME")
 (options,args) = parser.parse_args()
 
-image_path = os.path.abspath(os.path.normpath(os.path.join(os.path.dirname(__file__),"images")))
-index_path = os.path.abspath(os.path.normpath(os.path.join(os.path.dirname(__file__),"downtime_template.html")))
+image_path = os.path.abspath(os.path.normpath(os.path.join(os.path.dirname(__file__),"../images")))
+index_path = os.path.abspath(os.path.normpath(os.path.join(os.path.dirname(__file__),"../downtime_template.html")))
 
 cherrypy.config.update({'global' : {'server.socketPort' : int(options.port)},
                         '/images' : {'staticFilter.on' : True,
